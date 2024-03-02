@@ -1,23 +1,28 @@
-pragma solidity ^0.8.0;
+import React, { useEffect, useState } from 'react';
+import Web3 from 'web3';
+import VotingContract from './contracts/VotingContract';
+import PollList from './components/PollList';
 
-contract Voting {
-    struct Poll {
-        string question;
-        string[] options;
-        mapping(address => uint) votes;
-    }
+function App() {
+    const [web3, setWeb3] = useState(null);
+    const [accounts, setAccounts] = useState([]);
+    const [contract, setContract] = useState(null);
 
-    Poll[] public polls;
+    useEffect(() => {
+        async function init() {
+            // Initialize Web3
+            // Initialize contract instance
+            // Get user accounts
+        }
+        init();
+    }, []);
 
-    function createPoll(string memory _question, string[] memory _options) public {
-        // Create a new poll
-    }
-
-    function vote(uint _pollId, uint _optionId) public {
-        // Record vote for a poll
-    }
-
-    function getPollResults(uint _pollId) public view returns (uint[] memory) {
-        // Get poll results
-    }
+    return (
+        <div className="App">
+            <h1>Decentralized Voting System</h1>
+            <PollList contract={contract} accounts={accounts} />
+        </div>
+    );
 }
+
+export default App;
