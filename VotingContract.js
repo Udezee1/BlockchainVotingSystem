@@ -1,28 +1,9 @@
-import React, { useEffect, useState } from 'react';
 import Web3 from 'web3';
-import VotingContract from './contracts/VotingContract';
-import PollList from './components/PollList';
+import VotingContractABI from './VotingContractABI.json';
 
-function App() {
-    const [web3, setWeb3] = useState(null);
-    const [accounts, setAccounts] = useState([]);
-    const [contract, setContract] = useState(null);
+const web3 = new Web3(Web3.givenProvider || 'http://localhost:8545');
 
-    useEffect(() => {
-        async function init() {
-            // Initialize Web3
-            // Initialize contract instance
-            // Get user accounts
-        }
-        init();
-    }, []);
+const contractAddress = 'CONTRACT_ADDRESS';
+const contract = new web3.eth.Contract(VotingContractABI, contractAddress);
 
-    return (
-        <div className="App">
-            <h1>Decentralized Voting System</h1>
-            <PollList contract={contract} accounts={accounts} />
-        </div>
-    );
-}
-
-export default App;
+export default contract;
